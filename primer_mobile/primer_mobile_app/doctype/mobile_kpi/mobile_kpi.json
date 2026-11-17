@@ -1,0 +1,108 @@
+{
+  "actions": [],
+  "autoname": "field:kpi_key",
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile KPI",
+  "field_order": [
+    "kpi_key",
+    "module_key",
+    "enabled",
+    "release_state",
+    "required_feature",
+    "label_en",
+    "label_ar",
+    "number_card",
+    "currency",
+    "sort_order"
+  ],
+  "fields": [
+    {
+      "fieldname": "kpi_key",
+      "label": "KPI Key",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "module_key",
+      "label": "Module Key",
+      "fieldtype": "Select",
+      "options": "hr\naccounts\nsales\npurchase\nstock",
+      "default": "hr",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "enabled",
+      "label": "Enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "release_state",
+      "label": "Release State",
+      "fieldtype": "Select",
+      "options": "AVAILABLE\nCOMING_SOON\nHIDDEN",
+      "default": "COMING_SOON",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "required_feature",
+      "label": "Required Feature",
+      "fieldtype": "Link",
+      "options": "Mobile Feature"
+    },
+    {
+      "fieldname": "label_en",
+      "label": "Label (English)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_ar",
+      "label": "Label (Arabic)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "number_card",
+      "label": "Number Card",
+      "fieldtype": "Link",
+      "options": "Number Card"
+    },
+    {
+      "fieldname": "currency",
+      "label": "Currency",
+      "fieldtype": "Link",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "sort_order",
+      "label": "Sort Order",
+      "fieldtype": "Int",
+      "default": "10"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

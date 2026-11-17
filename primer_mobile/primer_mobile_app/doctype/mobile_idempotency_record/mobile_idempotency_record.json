@@ -1,0 +1,93 @@
+{
+  "actions": [],
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile Idempotency Record",
+  "field_order": [
+    "user",
+    "device",
+    "endpoint",
+    "idempotency_key_hash",
+    "request_fingerprint",
+    "status",
+    "response_code",
+    "response_json",
+    "expires_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "user",
+      "label": "User",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "device",
+      "label": "Device",
+      "fieldtype": "Link",
+      "options": "Mobile Device"
+    },
+    {
+      "fieldname": "endpoint",
+      "label": "Endpoint Key",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "idempotency_key_hash",
+      "label": "Idempotency Key Hash",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1,
+      "index": 1
+    },
+    {
+      "fieldname": "request_fingerprint",
+      "label": "Request Fingerprint",
+      "fieldtype": "Data",
+      "description": "SHA-256 hash of the normalized request parameters."
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "IN_PROGRESS\nCOMPLETED\nFAILED",
+      "default": "IN_PROGRESS",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "response_code",
+      "label": "HTTP Response Code",
+      "fieldtype": "Int",
+      "default": "200"
+    },
+    {
+      "fieldname": "response_json",
+      "label": "Serialized Response",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "expires_at",
+      "label": "Expires At",
+      "fieldtype": "Datetime",
+      "reqd": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1
+    }
+  ]
+}

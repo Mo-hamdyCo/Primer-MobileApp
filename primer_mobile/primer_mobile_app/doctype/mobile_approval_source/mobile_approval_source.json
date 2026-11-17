@@ -1,0 +1,115 @@
+{
+  "actions": [],
+  "autoname": "field:doctype_target",
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile Approval Source",
+  "field_order": [
+    "doctype_target",
+    "enabled",
+    "release_state",
+    "label_en",
+    "label_ar",
+    "mode",
+    "pending_status_field",
+    "pending_status_value",
+    "approver_field",
+    "requires_comment_on_reject",
+    "allow_self_approval"
+  ],
+  "fields": [
+    {
+      "fieldname": "doctype_target",
+      "label": "Target DocType",
+      "fieldtype": "Link",
+      "options": "DocType",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "enabled",
+      "label": "Enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "release_state",
+      "label": "Release State",
+      "fieldtype": "Select",
+      "options": "AVAILABLE\nCOMING_SOON\nHIDDEN",
+      "default": "COMING_SOON",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_en",
+      "label": "Label (English)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_ar",
+      "label": "Label (Arabic)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "mode",
+      "label": "Approval Mode",
+      "fieldtype": "Select",
+      "options": "AUTO\nWORKFLOW\nSTANDARD",
+      "default": "AUTO",
+      "reqd": 1
+    },
+    {
+      "fieldname": "pending_status_field",
+      "label": "Pending Status Field",
+      "fieldtype": "Data",
+      "default": "status"
+    },
+    {
+      "fieldname": "pending_status_value",
+      "label": "Pending Status Value",
+      "fieldtype": "Data",
+      "default": "Open"
+    },
+    {
+      "fieldname": "approver_field",
+      "label": "Approver Field",
+      "fieldtype": "Data",
+      "default": "leave_approver"
+    },
+    {
+      "fieldname": "requires_comment_on_reject",
+      "label": "Require Comment on Reject",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "allow_self_approval",
+      "label": "Allow Self-Approval",
+      "fieldtype": "Check",
+      "default": "0"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

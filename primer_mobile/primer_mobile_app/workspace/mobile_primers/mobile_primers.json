@@ -1,0 +1,129 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"BU0BC1k3eA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Mobile Primers</span>\",\"col\":12}},{\"id\":\"TKJ7LNtAtO\",\"type\":\"card\",\"data\":{\"card_name\":\"Mobile Setting\",\"col\":4}}]",
+ "creation": "2026-11-14 14:59:50.566561",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "link-url",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Mobile Primers",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Setting",
+   "link_count": 9,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Device",
+   "link_count": 0,
+   "link_to": "Mobile Device",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Access Profile",
+   "link_count": 0,
+   "link_to": "Mobile Access Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Checkin Attempt",
+   "link_count": 0,
+   "link_to": "Mobile Checkin Attempt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Checkin Policy",
+   "link_count": 0,
+   "link_to": "Mobile Checkin Policy",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Feature",
+   "link_count": 0,
+   "link_to": "Mobile Feature",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Location",
+   "link_count": 0,
+   "link_to": "Mobile Location",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Profile Rule",
+   "link_count": 0,
+   "link_to": "Mobile Profile Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Session",
+   "link_count": 0,
+   "link_to": "Mobile Session",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Primers Mobile Settings",
+   "link_count": 0,
+   "link_to": "Primers Mobile Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-14 15:04:39.934073",
+ "modified_by": "Administrator",
+ "module": "Primer Mobile App",
+ "name": "Mobile Primers",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 25.0,
+ "shortcuts": [],
+ "title": "Mobile Primers"
+}

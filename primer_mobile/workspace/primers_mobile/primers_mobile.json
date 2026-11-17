@@ -1,0 +1,158 @@
+{
+  "charts": [],
+  "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Primers Mobile Administration\",\"level\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Manage mobile app configuration, security policies, access profiles, and push notifications.\"}},{\"type\":\"card\",\"data\":{\"card_name\":\"Configuration & Policies\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Security & Devices\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Audit & Operations\",\"col\":4}}]",
+  "custom_blocks": [],
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "mobile",
+  "indicator_color": "blue",
+  "is_hidden": 0,
+  "is_standard": 1,
+  "label": "Primers Mobile",
+  "links": [
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Primers Mobile Settings",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Primers Mobile Settings",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Access Profiles",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Access Profile",
+      "onboard": 1,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Profile Rules",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Profile Rule",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Locations",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Location",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Check-in Policies",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Checkin Policy",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "App Menu Items",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile App Menu Item",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Notification Categories",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Notification Category",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Devices",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Device",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Active Mobile Sessions",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Session",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Check-in Attempts Log",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Checkin Attempt",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Push Notification Logs",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Push Log",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Approval Sources",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Approval Source",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile Doc Configs",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile Doc Config",
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Mobile KPIs",
+      "link_count": 0,
+      "link_type": "DocType",
+      "link_to": "Mobile KPI",
+      "type": "Link"
+    }
+  ],
+  "module": "Primer Mobile App",
+  "name": "Primers Mobile",
+  "onboarding": "",
+  "public": 1,
+  "roles": [
+    {
+      "role": "System Manager"
+    },
+    {
+      "role": "Mobile Admin"
+    }
+  ],
+  "sequence_id": 1.0,
+  "shortcuts": [],
+  "title": "Primers Mobile"
+}

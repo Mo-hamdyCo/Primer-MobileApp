@@ -1,0 +1,147 @@
+{
+  "actions": [],
+  "autoname": "field:config_key",
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile Doc Config",
+  "field_order": [
+    "config_key",
+    "module_key",
+    "enabled",
+    "release_state",
+    "label_en",
+    "label_ar",
+    "icon",
+    "target_doctype",
+    "required_feature",
+    "title_field",
+    "subtitle_field",
+    "status_field",
+    "read_only",
+    "allowed_sort_field",
+    "default_page_size",
+    "base_filters_json"
+  ],
+  "fields": [
+    {
+      "fieldname": "config_key",
+      "label": "Config Key",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "module_key",
+      "label": "Module Key",
+      "fieldtype": "Select",
+      "options": "hr\naccounts\nsales\npurchase\nstock",
+      "default": "hr",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "enabled",
+      "label": "Enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "release_state",
+      "label": "Release State",
+      "fieldtype": "Select",
+      "options": "AVAILABLE\nCOMING_SOON\nHIDDEN",
+      "default": "COMING_SOON",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_en",
+      "label": "Label (English)",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "label_ar",
+      "label": "Label (Arabic)",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "icon",
+      "label": "Icon",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "target_doctype",
+      "label": "Target DocType",
+      "fieldtype": "Link",
+      "options": "DocType",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "required_feature",
+      "label": "Required Feature",
+      "fieldtype": "Link",
+      "options": "Mobile Feature"
+    },
+    {
+      "fieldname": "title_field",
+      "label": "Title Field",
+      "fieldtype": "Data",
+      "default": "name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "subtitle_field",
+      "label": "Subtitle Field",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "status_field",
+      "label": "Status Field",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "read_only",
+      "label": "Read Only",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "allowed_sort_field",
+      "label": "Allowed Sort Field",
+      "fieldtype": "Data",
+      "default": "modified"
+    },
+    {
+      "fieldname": "default_page_size",
+      "label": "Default Page Size",
+      "fieldtype": "Int",
+      "default": "20"
+    },
+    {
+      "fieldname": "base_filters_json",
+      "label": "Base Filters (JSON)",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "actions": [],
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile Push Log",
+  "field_order": [
+    "notification",
+    "device",
+    "user",
+    "category",
+    "notification_type",
+    "source_doctype",
+    "source_name",
+    "dedup_key",
+    "section_status",
+    "status",
+    "attempt_count",
+    "provider_message_id",
+    "error_code",
+    "next_retry_at",
+    "sent_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "notification",
+      "label": "Mobile Notification",
+      "fieldtype": "Link",
+      "options": "Mobile Notification",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "device",
+      "label": "Device",
+      "fieldtype": "Link",
+      "options": "Mobile Device",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "user",
+      "label": "User",
+      "fieldtype": "Link",
+      "options": "User",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "category",
+      "label": "Category",
+      "fieldtype": "Link",
+      "options": "Mobile Notification Category"
+    },
+    {
+      "fieldname": "notification_type",
+      "label": "Notification Type",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "source_doctype",
+      "label": "Source DocType",
+      "fieldtype": "Link",
+      "options": "DocType",
+      "description": "Source DocType that triggered this notification (e.g. Leave Application)"
+    },
+    {
+      "fieldname": "source_name",
+      "label": "Source Document Name",
+      "fieldtype": "Data",
+      "description": "Source document name. Use together with source_doctype to avoid ambiguity."
+    },
+    {
+      "fieldname": "dedup_key",
+      "label": "Deduplication Key",
+      "fieldtype": "Data",
+      "index": 1,
+      "description": "SHA-256 of (device, category, source_doctype, source_name, notification_type). Prevents duplicate pushes."
+    },
+    {
+      "fieldname": "section_status",
+      "label": "Delivery Status",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "PENDING\nSENT\nFAILED\nSKIPPED",
+      "default": "PENDING",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "attempt_count",
+      "label": "Attempt Count",
+      "fieldtype": "Int",
+      "default": "0"
+    },
+    {
+      "fieldname": "provider_message_id",
+      "label": "Provider Message ID",
+      "fieldtype": "Data",
+      "read_only": 1
+    },
+    {
+      "fieldname": "error_code",
+      "label": "Safe Error Code",
+      "fieldtype": "Data",
+      "read_only": 1
+    },
+    {
+      "fieldname": "next_retry_at",
+      "label": "Next Retry At",
+      "fieldtype": "Datetime",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sent_at",
+      "label": "Sent At",
+      "fieldtype": "Datetime",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Mobile Admin", "read": 1, "write": 1}
+  ]
+}

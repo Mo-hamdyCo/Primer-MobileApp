@@ -1,0 +1,137 @@
+{
+  "actions": [],
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile Checkin Attempt",
+  "field_order": [
+    "user",
+    "employee",
+    "device",
+    "attempted_at",
+    "result",
+    "reason_code",
+    "log_type",
+    "is_mock",
+    "latitude",
+    "longitude",
+    "accuracy_meters",
+    "matched_location",
+    "distance_meters",
+    "photo_file",
+    "idempotency_key",
+    "request_id"
+  ],
+  "fields": [
+    {
+      "fieldname": "user",
+      "label": "User",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "employee",
+      "label": "Employee",
+      "fieldtype": "Link",
+      "options": "Employee",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "device",
+      "label": "Device",
+      "fieldtype": "Link",
+      "options": "Mobile Device"
+    },
+    {
+      "fieldname": "attempted_at",
+      "label": "Attempted At",
+      "fieldtype": "Datetime",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "result",
+      "label": "Result",
+      "fieldtype": "Select",
+      "options": "ACCEPTED\nREJECTED",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "reason_code",
+      "label": "Reason Code",
+      "fieldtype": "Data",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "log_type",
+      "label": "Log Type",
+      "fieldtype": "Select",
+      "options": "IN\nOUT"
+    },
+    {
+      "fieldname": "is_mock",
+      "label": "Reported Mock Location",
+      "fieldtype": "Check",
+      "default": "0"
+    },
+    {
+      "fieldname": "latitude",
+      "label": "Latitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "longitude",
+      "label": "Longitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "accuracy_meters",
+      "label": "Accuracy (Meters)",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "matched_location",
+      "label": "Matched Location",
+      "fieldtype": "Link",
+      "options": "Mobile Location"
+    },
+    {
+      "fieldname": "distance_meters",
+      "label": "Distance (Meters)",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "photo_file",
+      "label": "Photo Reference",
+      "fieldtype": "Link",
+      "options": "File"
+    },
+    {
+      "fieldname": "idempotency_key",
+      "label": "Idempotency Key",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "request_id",
+      "label": "Request ID",
+      "fieldtype": "Data",
+      "index": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1
+    }
+  ]
+}

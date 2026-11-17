@@ -1,0 +1,126 @@
+{
+  "actions": [],
+  "autoname": "field:menu_key",
+  "doctype": "DocType",
+  "module": "Primer Mobile App",
+  "name": "Mobile App Menu Item",
+  "field_order": [
+    "menu_key",
+    "parent_menu_item",
+    "enabled",
+    "sort_order",
+    "label_en",
+    "label_ar",
+    "icon",
+    "module_key",
+    "release_state",
+    "required_feature",
+    "route_key",
+    "badge_source"
+  ],
+  "fields": [
+    {
+      "fieldname": "menu_key",
+      "label": "Menu Key",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1,
+      "description": "Unique stable identifier for this menu item (e.g. hr_checkin, hr_leave)."
+    },
+    {
+      "fieldname": "parent_menu_item",
+      "label": "Parent Menu Item",
+      "fieldtype": "Link",
+      "options": "Mobile App Menu Item"
+    },
+    {
+      "fieldname": "enabled",
+      "label": "Enabled",
+      "fieldtype": "Check",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "sort_order",
+      "label": "Sort Order",
+      "fieldtype": "Int",
+      "default": "10",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_en",
+      "label": "Label (English)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "label_ar",
+      "label": "Label (Arabic)",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "icon",
+      "label": "Icon Identifier",
+      "fieldtype": "Data",
+      "description": "Flutter icon identifier from the client-side allowlist (e.g. checkin, calendar, leave, payslip, approvals)."
+    },
+    {
+      "fieldname": "module_key",
+      "label": "Module Key",
+      "fieldtype": "Select",
+      "options": "hr\naccounts\nsales\npurchase\nstock\ncommon",
+      "default": "hr",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "release_state",
+      "label": "Release State",
+      "fieldtype": "Select",
+      "options": "AVAILABLE\nCOMING_SOON\nHIDDEN",
+      "default": "AVAILABLE",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "required_feature",
+      "label": "Required Feature",
+      "fieldtype": "Link",
+      "options": "Mobile Feature",
+      "description": "The feature required to display/access this menu item."
+    },
+    {
+      "fieldname": "route_key",
+      "label": "Static Route Key",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "description": "Static client route from Flutter allowlist (e.g. hr_checkin, hr_attendance, hr_leave, hr_payslips, approvals, expense_claims, shift_requests, attendance_requests, accounts_kpis, sales_docs, purchase_docs, stock_lookup)."
+    },
+    {
+      "fieldname": "badge_source",
+      "label": "Badge Source",
+      "fieldtype": "Data",
+      "description": "Optional badge provider key (e.g. pending_approvals_count, unread_count)."
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Mobile Admin",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

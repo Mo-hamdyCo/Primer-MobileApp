@@ -1,0 +1,213 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "issingle": 1,
+ "module": "Primer Mobile App",
+ "name": "Primers Mobile Settings",
+ "field_order": [
+  "enabled",
+  "maintenance_mode",
+  "maintenance_message_en",
+  "maintenance_message_ar",
+  "api_version",
+  "config_version",
+  "min_version_code",
+  "latest_version_code",
+  "latest_version_name",
+  "force_update",
+  "access_token_ttl_minutes",
+  "refresh_token_ttl_days",
+  "max_active_devices_per_user",
+  "company_name",
+  "app_display_name",
+  "accent_color",
+  "support_email",
+  "support_phone",
+  "fcm_transport",
+  "firebase_project_id",
+  "firebase_app_id",
+  "firebase_api_key",
+  "firebase_sender_id",
+  "firebase_service_account",
+  "default_salary_visibility",
+  "payslip_pdf_enabled",
+  "retention_days_sessions",
+  "retention_days_checkin_attempts"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "maintenance_mode",
+   "label": "Maintenance Mode",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "maintenance_message_en",
+   "label": "Maintenance Message (English)",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "maintenance_message_ar",
+   "label": "Maintenance Message (Arabic)",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "api_version",
+   "label": "API Version",
+   "fieldtype": "Int",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "config_version",
+   "label": "Configuration Version",
+   "fieldtype": "Int",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "min_version_code",
+   "label": "Minimum Version Code",
+   "fieldtype": "Int",
+   "default": "1"
+  },
+  {
+   "fieldname": "latest_version_code",
+   "label": "Latest Version Code",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "latest_version_name",
+   "label": "Latest Version Name",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "force_update",
+   "label": "Force Update",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "access_token_ttl_minutes",
+   "label": "Access Token TTL (Minutes)",
+   "fieldtype": "Int",
+   "default": "30"
+  },
+  {
+   "fieldname": "refresh_token_ttl_days",
+   "label": "Refresh Token TTL (Days)",
+   "fieldtype": "Int",
+   "default": "30"
+  },
+  {
+   "fieldname": "max_active_devices_per_user",
+   "label": "Maximum Active Devices Per User",
+   "fieldtype": "Int",
+   "default": "3"
+  },
+  {
+   "fieldname": "company_name",
+   "label": "Company Name",
+   "fieldtype": "Link",
+   "options": "Company"
+  },
+  {
+   "fieldname": "app_display_name",
+   "label": "App Display Name",
+   "fieldtype": "Data",
+   "default": "Primers Mobile"
+  },
+  {
+   "fieldname": "accent_color",
+   "label": "Accent Color",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "support_email",
+   "label": "Support Email",
+   "fieldtype": "Data",
+   "options": "Email"
+  },
+  {
+   "fieldname": "support_phone",
+   "label": "Support Phone",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "fcm_transport",
+   "label": "FCM Transport",
+   "fieldtype": "Select",
+   "options": "DIRECT\nRELAY",
+   "default": "DIRECT"
+  },
+  {
+   "fieldname": "firebase_project_id",
+   "label": "Firebase Project ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "firebase_app_id",
+   "label": "Firebase App ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "firebase_api_key",
+   "label": "Firebase API Key",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "firebase_sender_id",
+   "label": "Firebase Sender ID",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "firebase_service_account",
+   "label": "Firebase Service Account",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "default_salary_visibility",
+   "label": "Default Salary Visibility",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "payslip_pdf_enabled",
+   "label": "Payslip PDF Enabled",
+   "fieldtype": "Check",
+   "default": "0"
+  },
+  {
+   "fieldname": "retention_days_sessions",
+   "label": "Session Retention Days",
+   "fieldtype": "Int",
+   "default": "90"
+  },
+  {
+   "fieldname": "retention_days_checkin_attempts",
+   "label": "Check-in Attempt Retention Days",
+   "fieldtype": "Int",
+   "default": "90"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Mobile Admin",
+   "read": 1,
+   "write": 1
+  }
+ ]
+}

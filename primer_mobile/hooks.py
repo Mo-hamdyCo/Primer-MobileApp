@@ -8,7 +8,7 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext", "hrms"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -83,7 +83,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "primer_mobile.install.before_install"
-# after_install = "primer_mobile.install.after_install"
+after_install = "primer_mobile.install.after_install"
+after_migrate = "primer_mobile.install.after_migrate"
 
 # Uninstallation
 # ------------
@@ -148,23 +149,24 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"primer_mobile.tasks.all"
-# 	],
-# 	"daily": [
-# 		"primer_mobile.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"primer_mobile.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"primer_mobile.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"primer_mobile.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"cron": {
+		"*/15 * * * *": ["primer_mobile.tasks.purge.retry_failed_pushes"]
+	},
+	"hourly": ["primer_mobile.tasks.purge.expire_mobile_sessions"],
+	"daily": ["primer_mobile.tasks.purge.purge_expired_mobile_data"],
+}
+
+doc_events = {
+	"Mobile Feature": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"Mobile Access Profile": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"Mobile Profile Rule": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"Mobile Location": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"Mobile Checkin Policy": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"Mobile Notification Category": {"on_update": "primer_mobile.core.config.bump_version", "on_trash": "primer_mobile.core.config.bump_version"},
+	"PWA Notification": {"after_insert": "primer_mobile.notifications.handlers.on_pwa_notification_created"},
+	"Salary Slip": {"on_submit": "primer_mobile.notifications.handlers.on_salary_slip_submitted"},
+}
 
 # Testing
 # -------
@@ -231,9 +233,7 @@ app_license = "mit"
 # Authentication and authorization
 # --------------------------------
 
-# auth_hooks = [
-# 	"primer_mobile.auth.validate"
-# ]
+auth_hooks = ["primer_mobile.core.auth.authenticate_mobile_bearer"]
 
 # Automatically update python controller files with type annotations for this app.
 # export_python_type_annotations = True
