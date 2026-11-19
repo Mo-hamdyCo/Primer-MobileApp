@@ -17,6 +17,7 @@ def issue_session(device_id: str, platform: str = "ANDROID", app_version_code: i
 	"""Exchange an already-authenticated native Frappe session for mobile tokens."""
 	if frappe.session.user == "Guest":
 		frappe.throw(_("Complete the native login and two-factor challenge first."), frappe.AuthenticationError)
+	platform = (platform or "ANDROID").strip().upper()	
 	return create_mobile_session(frappe.session.user, device_id, platform, app_version_code, device_name)
 
 
