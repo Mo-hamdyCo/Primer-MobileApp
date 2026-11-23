@@ -1,1 +1,156 @@
-{"actions":[],"doctype":"DocType","module":"Primer Mobile App","name":"Mobile Location","field_order":["location_name","enabled","location_type","company","branch","project","latitude","longitude","radius_meters","valid_from","valid_to","address"],"fields":[{"fieldname":"location_name","label":"Location Name","fieldtype":"Data","reqd":1,"in_list_view":1},{"fieldname":"enabled","label":"Enabled","fieldtype":"Check","default":"1","in_list_view":1},{"fieldname":"location_type","label":"Location Type","fieldtype":"Select","options":"BRANCH\nFIELD\nPROJECT_SITE\nOTHER","default":"BRANCH","reqd":1,"in_list_view":1},{"fieldname":"company","label":"Company","fieldtype":"Link","options":"Company"},{"fieldname":"branch","label":"Branch","fieldtype":"Link","options":"Branch"},{"fieldname":"project","label":"Project","fieldtype":"Link","options":"Project"},{"fieldname":"latitude","label":"Latitude","fieldtype":"Float","reqd":1},{"fieldname":"longitude","label":"Longitude","fieldtype":"Float","reqd":1},{"fieldname":"radius_meters","label":"Radius (Meters)","fieldtype":"Int","reqd":1,"default":"100"},{"fieldname":"valid_from","label":"Valid From","fieldtype":"Date"},{"fieldname":"valid_to","label":"Valid To","fieldtype":"Date"},{"fieldname":"address","label":"Address","fieldtype":"Small Text"}],"permissions":[{"role":"System Manager","read":1,"write":1,"create":1,"delete":1},{"role":"Mobile Admin","read":1,"write":1,"create":1,"delete":1}]}
+{
+ "actions": [],
+ "creation": "2026-11-09 13:44:52.743928",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location_name",
+  "branch",
+  "company",
+  "latitude",
+  "coordinates_text",
+  "valid_from",
+  "enabled",
+  "address",
+  "column_break_iflq",
+  "location_type",
+  "project",
+  "longitude",
+  "google_maps_url",
+  "radius_meters",
+  "valid_to",
+  "section_break_map",
+  "location"
+ ],
+ "fields": [
+  {
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location Name",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "default": "BRANCH",
+   "fieldname": "location_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Location Type",
+   "options": "BRANCH\nFIELD\nPROJECT_SITE\nOTHER",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "read_only_depends_on": "eval:doc.location"
+  },
+  {
+   "fieldname": "coordinates_text",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Coordinates",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Date",
+   "label": "Valid To"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_iflq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "read_only_depends_on": "eval:doc.location"
+  },
+  {
+   "fieldname": "google_maps_url",
+   "fieldtype": "Data",
+   "label": "Google Maps URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "default": "100",
+   "fieldname": "radius_meters",
+   "fieldtype": "Int",
+   "label": "Radius (Meters)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_map",
+   "fieldtype": "Section Break",
+   "label": "Map & Geolocation"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Geolocation",
+   "label": "Location"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-22 17:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Primer Mobile App",
+ "name": "Mobile Location",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "Mobile Admin",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

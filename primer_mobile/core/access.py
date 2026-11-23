@@ -92,6 +92,16 @@ def resolve_profile(user: str) -> dict | None:
 	if default:
 		return frappe.get_doc("Mobile Access Profile", default[0]).as_dict()
 
+	# Fallback to any enabled profile
+	any_enabled = frappe.get_all(
+		"Mobile Access Profile",
+		filters={"enabled": 1},
+		pluck="name",
+		limit_page_length=1,
+	)
+	if any_enabled:
+		return frappe.get_doc("Mobile Access Profile", any_enabled[0]).as_dict()
+
 	return None
 
 

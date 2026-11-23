@@ -101,9 +101,9 @@
   },
   {
    "fieldname": "refresh_token_ttl_days",
-   "label": "Refresh Token TTL (Days)",
+   "label": "Refresh Token TTL (Days, 0 = No Expiry)",
    "fieldtype": "Int",
-   "default": "30"
+   "default": "0"
   },
   {
    "fieldname": "max_active_devices_per_user",

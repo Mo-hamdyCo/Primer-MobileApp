@@ -24,6 +24,7 @@ from frappe.utils import (
 
 from primer_mobile.core.access import get_employee, profile_features, resolve_profile
 from primer_mobile.core.checkin import checkin as create_checkin
+from primer_mobile.core.errors import make_error_response
 from primer_mobile.core.mobile_api import require_mobile_session
 
 
@@ -268,7 +269,9 @@ def checkin(
 	latitude: float,
 	longitude: float,
 	accuracy_m: float = 10.0,
+	accuracy_meters: float | None = None,
 	is_mock: int = 0,
+	is_mock_location: int | bool = 0,
 	captured_at_utc: str | None = None,
 	device_id: str | None = None,
 	idempotency_key: str | None = None,
@@ -278,43 +281,57 @@ def checkin(
 	photo_file_id: str | None = None,
 ) -> dict:
 	"""Process mobile check-in with server-side validation and audit trail."""
-	require_mobile_session()
-	header_device = frappe.get_request_header("X-Device-Id")
-	effective_device = header_device or device_id
+	try:
+		require_mobile_session()
+		header_device = frappe.get_request_header("X-Device-Id")
+		effective_device = header_device or device_id or getattr(frappe.local, "mobile_session", {}).get("device") or "UNKNOWN_DEVICE"
 
-	if not captured_at_utc:
-		captured_at_utc = now_datetime().isoformat()
+		header_idempotency = frappe.get_request_header("X-Idempotency-Key") or frappe.get_request_header("Idempotency-Key")
+		effective_idempotency = header_idempotency or idempotency_key
 
-	res = create_checkin(
-		user=frappe.session.user,
-		device=effective_device,
-		latitude=latitude,
-		longitude=longitude,
-		accuracy_meters=accuracy_m,
-		captured_at_utc=captured_at_utc,
-		log_type=log_type,
-		reason=reason,
-		mock_location=bool(cint(is_mock)),
-	)
+		effective_accuracy = flt(accuracy_meters if accuracy_meters is not None else accuracy_m) or 10.0
+		effective_is_mock = bool(cint(is_mock_location if is_mock_location else is_mock))
 
-	if not res.get("accepted"):
-		code = res.get("code") or "CHECKIN_FAILED"
-		frappe.local.response.http_status_code = 400
-		frappe.throw(_(code), title=code)
+		if not captured_at_utc:
+			captured_at_utc = now_datetime().isoformat()
 
-	return {
-		"log_name": res.get("employee_checkin"),
-		"time_utc": get_datetime(res.get("time")).isoformat() + "Z",
-		"log_type": res.get("log_type"),
-		"matched_location": {
-			"id": res.get("matched_location"),
-			"name": res.get("matched_location"),
-			"distance_m": res.get("distance_meters"),
+		res = create_checkin(
+			user=frappe.session.user,
+			device=effective_device,
+			latitude=flt(latitude),
+			longitude=flt(longitude),
+			accuracy_meters=effective_accuracy,
+			captured_at_utc=captured_at_utc,
+			log_type=log_type,
+			reason=reason,
+			mock_location=effective_is_mock,
+			photo_file_id=photo_file_id,
+			idempotency_key=effective_idempotency,
+		)
+
+		if not res.get("accepted"):
+			code = res.get("code") or "CHECKIN_FAILED"
+			details = res.get("details")
+			return make_error_response(code, details=details, http_status_code=400)
+
+		return {
+			"ok": True,
+			"log_name": res.get("employee_checkin"),
+			"employee_checkin": res.get("employee_checkin"),
+			"time_utc": get_datetime(res.get("time")).isoformat() + "Z",
+			"log_type": res.get("log_type"),
+			"matched_location": {
+				"id": res.get("matched_location"),
+				"name": res.get("matched_location"),
+				"distance_m": res.get("distance_meters"),
+			}
+			if res.get("matched_location")
+			else None,
+			"flags": [],
 		}
-		if res.get("matched_location")
-		else None,
-		"flags": [],
-	}
+	except Exception:
+		frappe.log_error(title="primer_mobile checkin", message=frappe.get_traceback())
+		return make_error_response("INTERNAL_ERROR", http_status_code=500)
 
 
 # ---------------------------------------------------------------------------
@@ -807,13 +824,17 @@ def list_leaves(status: str | None = None, page: int = 1, page_size: int = 20) -
 	}
 
 
-@frappe.whitelist(methods=["POST"])
-def get_leave(name: str) -> dict:
+@frappe.whitelist(methods=["GET", "POST"])
+def get_leave(name: str | None = None, leave_id: str | None = None) -> dict:
 	"""Fetch single leave request details with ownership verification."""
 	employee = _get_active_employee()
 	_require_feature("leave")
 
-	doc = frappe.get_doc("Leave Application", name)
+	target_name = name or leave_id or frappe.form_dict.get("name") or frappe.form_dict.get("leave_id")
+	if not target_name:
+		frappe.throw(_("Leave application name is required."), frappe.ValidationError)
+
+	doc = frappe.get_doc("Leave Application", target_name)
 	if doc.employee != employee["name"]:
 		frappe.local.response.http_status_code = 403
 		frappe.throw(_("Access denied."), frappe.PermissionError)
@@ -822,7 +843,7 @@ def get_leave(name: str) -> dict:
 
 
 @frappe.whitelist(methods=["POST"])
-def cancel_leave(name: str) -> dict:
+def cancel_leave(name: str | None = None, leave_id: str | None = None) -> dict:
 	"""Cancel a leave application if cancellation is permitted by profile and lifecycle."""
 	employee = _get_active_employee()
 	profile = _require_feature("leave")
@@ -831,7 +852,11 @@ def cancel_leave(name: str) -> dict:
 		frappe.local.response.http_status_code = 403
 		frappe.throw(_("Leave cancellation is not permitted by your profile."), title="PERMISSION_DENIED")
 
-	doc = frappe.get_doc("Leave Application", name)
+	target_name = name or leave_id or frappe.form_dict.get("name") or frappe.form_dict.get("leave_id")
+	if not target_name:
+		frappe.throw(_("Leave application name is required."), frappe.ValidationError)
+
+	doc = frappe.get_doc("Leave Application", target_name)
 	if doc.employee != employee["name"]:
 		frappe.local.response.http_status_code = 403
 		frappe.throw(_("Access denied."), frappe.PermissionError)
@@ -954,13 +979,17 @@ def list_payslips(year: int | None = None, page: int = 1, page_size: int = 20) -
 	}
 
 
-@frappe.whitelist(methods=["POST"])
-def get_payslip(name: str) -> dict:
+@frappe.whitelist(methods=["GET", "POST"])
+def get_payslip(name: str | None = None, salary_slip_id: str | None = None) -> dict:
 	"""Fetch single payslip details. Amount fields are omitted if show_salary_amounts=False."""
 	employee = _get_active_employee()
 	profile = _require_feature("payslip")
 
-	doc = frappe.get_doc("Salary Slip", name)
+	target_name = name or salary_slip_id or frappe.form_dict.get("name") or frappe.form_dict.get("salary_slip_id")
+	if not target_name:
+		frappe.throw(_("Salary slip name is required."), frappe.ValidationError)
+
+	doc = frappe.get_doc("Salary Slip", target_name)
 	if doc.employee != employee["name"]:
 		frappe.local.response.http_status_code = 403
 		frappe.throw(_("Access denied."), frappe.PermissionError)
